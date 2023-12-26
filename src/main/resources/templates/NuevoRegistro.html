@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Lateral</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #D9EDF6;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            left: 0;
+            background-color: #132235;
+            padding-top: 20px;
+            color: #87BBC8;
+            transition: all 0.3s;
+        }
+
+        #sidebar a {
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        #sidebar a:hover {
+            background-color: #132235;
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 16px;
+            transition: all 0.3s;
+            position: absolute;
+            width: calc(100% - 250px);
+            text-align: center; /* Centra el contenido horizontalmente */
+        }
+
+        #menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            z-index: 1000;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        #menu-toggle:hover {
+            color: #132235;
+        }
+
+        #logo {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #content-right {
+            position: fixed;
+            right: 0;
+            top: 0;
+            background-color: #132235;
+            padding: 20px;
+            text-align: right;
+            width: 250px;
+        }
+
+        #content-right a {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar {
+                left: -250px;
+            }
+
+            #content {
+                margin-left: 0;
+                width: 100%;
+                position: relative;
+            }
+
+            #content-right {
+                display: none;
+            }
+            
+.sub-menu {
+    display: none;
+    position: absolute;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.menu-item:hover .sub-menu {
+    display: block;
+}
+            
+        }
+    </style>
+</head>
+<body>
+	
+	
+	
+
+	<div id="sidebar">
+    <div id="logo">
+        <img src="/img/logo.png" alt="Logo">
+    </div>
+    <a th:href="@{/new}" >Registro Empleados</a>
+    
+        <!-- Agrega más opciones según sea necesario -->
+   
+    <a th:href="@{/new2}">Registro Vacaciones</a>
+    <a href="#">Reportes</a>
+</div>
+-----------------------------------------
+	<div id="content">
+		<div class="container mt-5">
+			<h1 style="color: coral; font-size: 60px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Registro de Empleados</h1>
+			<form>
+				<div class="form-row">
+
+					
+					<div class="col">
+						<label for="dni">DNI:</label>
+						<input type="text" class="form-control" id="dni" name="dni" required="requerid" placeholder="Ingrese su Dni">
+					</div>
+					
+					
+					
+					
+					<div class="col">
+						<label for="cargo">Cargo:</label>
+						<select class="form-control" id="cargo" name="cargo" required>
+						
+						<option selected>-----Seleccione-----</option>
+						<option>Administrador</option>
+						<option>Jefe de Area</option>
+						<option>Jefe de Logistica</option>
+						<option>Tecnico Administrativo</option>
+						<option>Asistente Contable</option>
+						<option>Cajero</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="nombre">Nombre:</label>
+						<input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Nombres">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="apellidos">Apellidos:</label>
+						<input type="text" class="form-control" id="apellidos" name="apellidos" required placeholder="Apellidos">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="direccion">Dirección:</label>
+					<input type="text" class="form-control" id="direccion" name="direccion" required placeholder="Direccion">
+				</div>
+
+				<div class="form-group">
+					<label for="correo">Correo:</label>
+					<input type="email" class="form-control" id="correo" name="correo" required placeholder="For Example@example.com">
+				</div>
+
+				<div class="form-group">
+					<label for="telefono">Teléfono:</label>
+					<input type="tel" class="form-control" id="telefono" name="telefono" required placeholder="Ingrese un numero de 9 dígitos">
+				</div>
+				
+				
+
+
+
+				<button type="button" class="btn btn-success">Guardar</button>
+				<button type="button" class="btn btn-warning">Editar</button>
+				<button type="button" class="btn btn-danger">Eliminar</button>
+			</form>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+	
+	
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menú Lateral</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#sidebar {
+			height: 100%;
+			width: 200px;
+			position: fixed;
+			left: 0;
+			background-color: #132235;
+			padding-top: 20px;
+			color: white;
+			transition: all 0.3s;
+		}
+
+		#sidebar a {
+			padding: 10px;
+			text-decoration: none;
+			font-size: 18px;
+			color: white;
+			display: block;
+			transition: all 0.3s;
+		}
+
+		#sidebar a:hover {
+			background-color: #132235;
+		}
+
+		#content {
+			margin-left: 250px;
+			padding: 16px;
+			transition: all 0.3s;
+			position: absolute;
+			width: calc(100% - 250px);
+			text-align: center;
+			/* Centra el contenido horizontalmente */
+		}
+
+		#menu-toggle {
+			font-size: 24px;
+			cursor: pointer;
+			position: fixed;
+			left: 10px;
+			top: 10px;
+			z-index: 1000;
+			color: white;
+			transition: all 0.3s;
+		}
+
+		#menu-toggle:hover {
+			color: #132235;
+		}
+
+		#logo {
+			text-align: center;
+			padding: 20px;
+		}
+
+		#logo img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		#content-right {
+			position: fixed;
+			right: 0;
+			top: 0;
+			background-color: #132235;
+			padding: 20px;
+			text-align: right;
+			width: 250px;
+		}
+
+		#content-right a {
+			display: block;
+			margin-bottom: 10px;
+			color: white;
+			text-decoration: none;
+			font-size: 16px;
+		}
+
+		@media (max-width: 768px) {
+			#sidebar {
+				left: -250px;
+			}
+
+			#content {
+				margin-left: 0;
+				width: 100%;
+				position: relative;
+			}
+
+			#content-right {
+				display: none;
+			}
+		}
+	</style>
+</head>
+
+<body >
+
+	<div id="sidebar">
+		<div id="logo">
+			<img src="/img/logo.png" alt="Logo">
+		</div>
+		<a th:href="@{/new}">Registro Empleado</a>
+		
+		<a th:href="@{/new3}">Registro Vacaciones</a>
+		<a href="#">Reportes</a>
+	</div>
+
+
+	<body >
+	<header class="bg-info text-center text-white p-4 ";  >
+		<h1 style="text-align: center;">Editar Registro de empleados</h1>
+	</header>
+
+	<nav class="container p-3 text-center" >
+		
+	</nav>
+
+	<main class="container">
+		<div class="col-6 col-md-4">
+			
+			<form th:action="@{/update1}" th:object=${vacaciones} method="POST">
+				<div class="card border-primary mb-5" style="max-width: 25rem"  >
+					
+					<div  class="card-body" >
+						<div class="form-group">
+							<label>Id</label>
+							<input th:field="*{id}" type="text" class="form-control" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label>Fecha Inicio</label>
+							<input th:field="*{FechaInicio}" type="date" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Fecha Fin</label>
+							<input th:field="*{FechaFin}" type="date" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Motivo</label>
+							<input th:field="*{motivo}" type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Estado</label>
+							<input th:field="*{estado}" type="text" class="form-control">
+						</div>
+						
+						<div class="form-group" style="display: none">
+							<label>FechaRegistro</label>
+							<input th:field="*{FechaRegistro}" type="datetime-local" class="form-control">
+						</div>
+
+
+						<div class="card-footer">
+							<input type="submit" value="Guardar" class="btn btn-success">
+						</div>
+					</div>
+			</form>
+		</div>
+	</main>
+
+	<footer class="bg-dark text-end text-white p-3 mt-3">
+		<h3>Redes Sociales</h3>
+	</footer>
+</body>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menú Lateral</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#sidebar {
+			height: 100%;
+			width: 200px;
+			position: fixed;
+			left: 0;
+			background-color: #132235;
+			padding-top: 20px;
+			color: white;
+			transition: all 0.3s;
+		}
+
+		#sidebar a {
+			padding: 10px;
+			text-decoration: none;
+			font-size: 18px;
+			color: white;
+			display: block;
+			transition: all 0.3s;
+		}
+
+		#sidebar a:hover {
+			background-color: #132235;
+		}
+
+		#content {
+			margin-left: 250px;
+			padding: 16px;
+			transition: all 0.3s;
+			position: absolute;
+			width: calc(100% - 250px);
+			text-align: center;
+			/* Centra el contenido horizontalmente */
+		}
+
+		#menu-toggle {
+			font-size: 24px;
+			cursor: pointer;
+			position: fixed;
+			left: 10px;
+			top: 10px;
+			z-index: 1000;
+			color: white;
+			transition: all 0.3s;
+		}
+
+		#menu-toggle:hover {
+			color: #132235;
+		}
+
+		#logo {
+			text-align: center;
+			padding: 20px;
+		}
+
+		#logo img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		#content-right {
+			position: fixed;
+			right: 0;
+			top: 0;
+			background-color: #132235;
+			padding: 20px;
+			text-align: right;
+			width: 250px;
+		}
+
+		#content-right a {
+			display: block;
+			margin-bottom: 10px;
+			color: white;
+			text-decoration: none;
+			font-size: 16px;
+		}
+
+		@media (max-width: 768px) {
+			#sidebar {
+				left: -250px;
+			}
+
+			#content {
+				margin-left: 0;
+				width: 100%;
+				position: relative;
+			}
+
+			#content-right {
+				display: none;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="sidebar">
+		<div id="logo">
+			<img src="/img/logo.png" alt="Logo">
+		</div>
+		<a th:href="@{/new}">Registro Empleado</a>
+
+		<a th:href="@{/new3}">Registro Vacaciones</a>
+		<a href="#">Reportes</a>
+	</div>
+
+	<body>
+		<header class="bg-info text-center text-white p-3">
+			<h1>Registro de Vacaciones</h1>
+		</header>
+
+		<main class="container mt-4">
+			<div class="col-sm-6">
+				<form th:action="@{/save2}" th:object=${vacaciones} method="POST">
+
+					<div class="card">
+						<div class="card-header">
+							<h3>Registro de Vacaciones</h3>
+						</div>
+						<div class="card-body">
+
+							<div class="form-group">
+								<label for="FechaInicio">Fecha de Inicio</label>
+								<input  type="date" class="form-control" required="required"
+									pattern="[0-9]{8}" title="Ingrese una fecha de inicio válida (ejemplo: dd/mm/yyyy)">
+								<small th:if="${#fields.hasErrors('FechaInicio')}" th:errors="*{fechaInicio}"
+									class="text-danger"></small>
+
+							</div>
+
+
+
+							<div class="form-group">
+								<label for="FechaFin">Fecha de Fin</label>
+								<input type="date" class="form-control" required="required"
+									pattern="[0-9]{8}" title="Ingrese una fecha fin válida (ejemplo: dd/mm/yyyy)">
+								<small th:if="${#fields.hasErrors('FechaFin')}" th:errors="*{FechaFin}"
+									class="text-danger"></small>
+
+							</div>
+
+							<div class="form-group">
+								<label for="motivo">Motivo</label>
+								<input th:field="*{motivo}" type="text" class="form-control" required="required"
+									pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Ingrese un nombre válido (solo letras)">
+								<small th:if="${#fields.hasErrors('motivo')}" th:errors="*{motivo}"
+									class="text-danger"></small>
+							</div>
+
+
+
+
+							<div class="card-footer">
+								<input type="submit" value="Guardar" class="btn btn-success">
+								
+								<a th:href="@{/new2}" type="submit" class="btn btn-success">Guardar</a>
+
+								<input type="submit" value="Regresar" class="btn btn-success">
+							</div>
+
+						</div>
+				</form>
+			</div>
+		</main>
+
+		<footer class="bg-info text-end text-white p-3 mt-3">
+			<h3 style="text-align: center">Redes Sociales</h3>
+		</footer>
+	</body>
+
+</html>
